@@ -28,7 +28,7 @@ function showToast(message, type = 'success') {
 }
 
 function formatCurrency(amount) {
-    return `$${amount.toFixed(2)}`;
+    return `₹${amount.toFixed(2)}`;
 }
 
 // API functions
@@ -93,7 +93,7 @@ async function placeOrder() {
         });
 
         if (response.ok) {
-            const order = await response.json();
+            await response.json();
             showToast('Order placed successfully!');
             cart = [];
             updateCart();
@@ -160,7 +160,7 @@ function updateCart() {
         cartItems.innerHTML = '<p class="text-gray-500 text-center py-8">Your cart is empty. Add items from the menu above.</p>';
         cartSummary.classList.add('hidden');
         cartCount.textContent = '0 items';
-        cartTotal.textContent = '$0.00';
+        cartTotal.textContent = '₹0.00';
     } else {
         cartItems.innerHTML = cart.map(item => `
             <div class="flex justify-between items-center py-2 border-b">
@@ -278,10 +278,6 @@ document.addEventListener('DOMContentLoaded', function() {
     fetchMenu();
     fetchTables();
     fetchOrders();
-
-    // Set up event listeners
     document.getElementById('place-order-btn').addEventListener('click', placeOrder);
-
-    // Auto-refresh orders every 5 seconds
     setInterval(fetchOrders, 5000);
 });
