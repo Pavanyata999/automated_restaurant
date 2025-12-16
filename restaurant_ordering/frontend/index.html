@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Ordering System</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .menu-item-card {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .menu-item-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-orange-600 to-red-600 text-white shadow-lg">
+        <div class="container mx-auto px-4 py-4">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <i class="fas fa-utensils text-2xl"></i>
+                    <h1 class="text-2xl font-bold">Restaurant Ordering System</h1>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <span id="cart-count" class="bg-white text-orange-600 px-3 py-1 rounded-full font-bold">0 items</span>
+                    <span id="cart-total" class="font-semibold">$0.00</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mx-auto px-4 py-8">
+        <!-- Table Selection -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">
+                <i class="fas fa-chair mr-2"></i>Select Table
+            </h2>
+            <div id="tables-container" class="grid grid-cols-2 md:grid-cols-5 gap-4">
+                <!-- Tables will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Menu Items -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">
+                <i class="fas fa-hamburger mr-2"></i>Menu Items
+            </h2>
+            <div id="menu-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Menu items will be loaded here -->
+            </div>
+        </section>
+
+        <!-- Shopping Cart -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">
+                <i class="fas fa-shopping-cart mr-2"></i>Your Order
+            </h2>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <div id="cart-items" class="mb-4">
+                    <p class="text-gray-500 text-center py-8">Your cart is empty. Add items from the menu above.</p>
+                </div>
+                <div id="cart-summary" class="hidden border-t pt-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <span class="text-lg font-semibold">Total:</span>
+                        <span id="cart-summary-total" class="text-2xl font-bold text-orange-600">$0.00</span>
+                    </div>
+                    <button id="place-order-btn" class="w-full bg-gradient-to-r from-orange-500 to-red-500 text-white py-3 rounded-lg font-semibold hover:from-orange-600 hover:to-red-600 transition">
+                        <i class="fas fa-check-circle mr-2"></i>Place Order
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Orders Status -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-bold mb-4 text-gray-800">
+                <i class="fas fa-clock mr-2"></i>Order Status
+            </h2>
+            <div id="orders-container" class="space-y-4">
+                <p class="text-gray-500 text-center py-8">No orders yet.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-4 right-4 bg-green-500 text-white px-6 py-3 rounded-lg shadow-lg transform translate-y-full transition-transform duration-300">
+        <div class="flex items-center">
+            <i class="fas fa-check-circle mr-2"></i>
+            <span id="toast-message">Success!</span>
+        </div>
+    </div>
+
+    <script src="app-new.js"></script>
+</body>
+</html>
